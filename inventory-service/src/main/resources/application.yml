@@ -3,14 +3,14 @@ server:
 
 spring:
   kafka:
-    boostrap-servers: ${KAFKA_BROKER:localhost:9092}
+    bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
     topic:
       inventory-success: inventory-success
       inventory-fail: inventory-fail
       orchestrator: orchestrator
-  consumer:
-    group-id: inventory-group
-    auto-offset-reset: latest
+    consumer:
+      group-id: inventory-group
+      auto-offset-reset: latest
 
   datasource:
     driver-class-name: org.postgresql.Driver

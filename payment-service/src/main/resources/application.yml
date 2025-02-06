@@ -8,9 +8,9 @@ spring:
       payment-success: payment-success
       payment-fail: payment-fail
       orchestrator: orchestrator
-  consumer:
-    group-id: payment-group
-    auto-offset-reset: latest
+    consumer:
+      group-id: payment-group
+      auto-offset-reset: latest
 
   datasource:
     driver-class-name: org.postgresql.Driver
