@@ -36,3 +36,21 @@ out/
 
 # Visual Studio Code
 .vscode/
+
+# Ignorar arquivos gradle
+build.gradle
+settings.gradle
+gradlew
+gradlew.bat
+
+# Ignorar diretórios gradle
+.gradle/
+gradle/wrapper/
+
+# Ignorar builds
+build/
+
+# IntelliJ IDEA e VS Code
+.idea/
+*.iml
+.vscode/
