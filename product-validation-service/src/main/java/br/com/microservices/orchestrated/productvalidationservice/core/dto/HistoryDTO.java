@@ -1,23 +1,21 @@
 package br.com.microservices.orchestrated.productvalidationservice.core.dto;
 
+import br.com.microservices.orchestrated.productvalidationservice.core.enums.ESagaStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Order {
+public class HistoryDTO {
 
-    private String id;
-    private List<OrderProducts> orderProducts;
-    private LocalDateTime createdAt;
-    private String transactionId;
-    private double totalAmount;
-    private int totalItens;
+    private ESagaStatus status;
+    private String message;
+    private LocalDateTime createAt;
+    private String source;
 }
