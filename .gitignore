@@ -1,10 +1,21 @@
-# Gradle Wrapper
-gradle/wrapper/
-.gradle
-build/
+# ===============================
+# Gradle
+# ===============================
+
+# Caches locais e builds
+.gradle/
+**/build/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+
+# Não ignore arquivos essenciais
+!gradlew
+!gradlew.bat
+!build.gradle
+!settings.gradle
+
+# ===============================
+# IDEs e Ferramentas
+# ===============================
 
 # Spring Tool Suite (STS)
 .apt_generated
@@ -19,7 +30,7 @@ bin/
 !**/src/test/**/bin/
 
 # IntelliJ IDEA
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -37,20 +48,9 @@ out/
 # Visual Studio Code
 .vscode/
 
-# Ignorar arquivos gradle
-build.gradle
-settings.gradle
-gradlew
-gradlew.bat
-
-# Ignorar diretórios gradle
-.gradle/
-gradle/wrapper/
-
-# Ignorar builds
-build/
-
-# IntelliJ IDEA e VS Code
-.idea/
-*.iml
-.vscode/
+# ===============================
+# Outras
+# ===============================
+# Arquivos temporários do SO
+.DS_Store
+Thumbs.db
