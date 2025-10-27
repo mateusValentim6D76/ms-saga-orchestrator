@@ -1,0 +1,2 @@
+rootProject.name = 'ms-saga-orchestrator'
+include 'order-service', 'orchestrator-service', 'product-validation-service', 'payment-service', 'inventory-service'

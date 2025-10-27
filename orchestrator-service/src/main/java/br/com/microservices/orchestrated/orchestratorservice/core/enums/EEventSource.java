@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 public enum EEventSource {
 
@@ -13,4 +11,7 @@ public enum EEventSource {
     PRODUCT_VALIDATION_SERVICE,
     PAYMENT_SERVICE,
     INVENTORY_SERVICE;
+
+    EEventSource() {
+    }
 }
