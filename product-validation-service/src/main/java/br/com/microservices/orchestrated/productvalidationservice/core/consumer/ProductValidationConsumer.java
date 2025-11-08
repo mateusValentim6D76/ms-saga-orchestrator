@@ -12,28 +12,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductValidationConsumer {
 
-    private final JsonUtil jsonUtil;
     private final ProductValidationService productValidationService;
+    private final JsonUtil jsonUtil;
 
     @KafkaListener(
             groupId = "${spring.kafka.consumer.group-id}",
             topics = "${spring.kafka.topic.product-validation-success}"
     )
-    public void consumeProductValidationSuccessEvent(String payload){
-        log.info("Receiving event {} from product-validation-success topic", payload);
+    public void consumeSuccessEvent(String payload) {
+        log.info("Receiving success event {} from product-validation-success topic", payload);
         var event = jsonUtil.toEvent(payload);
-        log.info(event.toString());
-        productValidationService.validateExistingProduct(jsonUtil.toEvent(payload));
+        productValidationService.validateExistingProducts(event);
     }
 
     @KafkaListener(
             groupId = "${spring.kafka.consumer.group-id}",
             topics = "${spring.kafka.topic.product-validation-fail}"
     )
-    public void consumeProductValidationFailEvent(String payload){
+    public void consumeFailEvent(String payload) {
         log.info("Receiving rollback event {} from product-validation-fail topic", payload);
         var event = jsonUtil.toEvent(payload);
-        log.info(event.toString());
-        productValidationService.rollbackEvent(jsonUtil.toEvent(payload));
+        productValidationService.rollbackEvent(event);
     }
 }

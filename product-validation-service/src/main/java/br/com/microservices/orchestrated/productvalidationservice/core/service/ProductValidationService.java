@@ -4,7 +4,6 @@ import br.com.microservices.orchestrated.productvalidationservice.config.excepti
 import br.com.microservices.orchestrated.productvalidationservice.core.dto.EventDTO;
 import br.com.microservices.orchestrated.productvalidationservice.core.dto.HistoryDTO;
 import br.com.microservices.orchestrated.productvalidationservice.core.dto.OrderProductsDTO;
-import br.com.microservices.orchestrated.productvalidationservice.core.enums.ESagaStatus;
 import br.com.microservices.orchestrated.productvalidationservice.core.models.Validation;
 import br.com.microservices.orchestrated.productvalidationservice.core.producer.KafkaProducer;
 import br.com.microservices.orchestrated.productvalidationservice.core.repository.ProductRepository;
@@ -18,7 +17,6 @@ import org.springframework.util.ObjectUtils;
 import java.time.LocalDateTime;
 
 import static br.com.microservices.orchestrated.productvalidationservice.core.enums.ESagaStatus.*;
-import static org.apache.logging.log4j.ThreadContext.isEmpty;
 
 @Service
 @Slf4j
@@ -35,7 +33,7 @@ public class ProductValidationService {
 
     private final JsonUtil jsonUtil;
 
-    public void validateExistingProduct(EventDTO event) {
+    public void validateExistingProducts(EventDTO event) {
         try {
             checkCurrentValidation(event);
             createValidation(event, true);
@@ -78,7 +76,7 @@ public class ProductValidationService {
         }
         event.getPayload().getOrderProducts().forEach(product -> {
             validateProductInformed(product);
-            validateExistingProduct(product.getProduct().getCode());
+            validateExistingProducts(product.getProduct().getCode());
 
         });
     }
@@ -98,7 +96,7 @@ public class ProductValidationService {
         }
     }
 
-    private void validateExistingProduct(String code) {
+    private void validateExistingProducts(String code) {
         if (!productRepository.existsByCode(code)) {
             throw new ValidationException("Product does not exists in database");
         }

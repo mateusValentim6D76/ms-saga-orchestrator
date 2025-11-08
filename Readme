@@ -1,0 +1,6 @@
+Ao buildar o projeto dentro da raiz de algum dos microservices, rodar o comando abaixo, 'dizendo' ao Gradle:
+“o diretório do build raiz é o pai (a raiz do monorepo)”.
+
+onde está 'order-service:clean e order-service:build, altere para o nome do service em que gostaria de realizar o build.'
+..\gradlew.bat -p .. :order-service:clean :order-service:build -x test
+
