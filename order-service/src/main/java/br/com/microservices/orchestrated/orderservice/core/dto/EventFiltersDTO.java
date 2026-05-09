@@ -1,4 +1,4 @@
 package br.com.microservices.orchestrated.orderservice.core.dto;
 
-public record EventFiltersDTO() {
+public record EventFiltersDTO(String orderId, String transactionId) {
 }

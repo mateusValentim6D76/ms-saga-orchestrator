@@ -2,11 +2,6 @@
 # Gradle
 # ===============================
 
-# Caches locais e builds
-.gradle/
-**/build/
-!gradle/wrapper/gradle-wrapper.jar
-
 # Não ignore arquivos essenciais
 !gradlew
 !gradlew.bat

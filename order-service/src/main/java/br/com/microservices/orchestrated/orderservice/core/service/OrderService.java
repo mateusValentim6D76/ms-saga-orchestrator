@@ -4,11 +4,10 @@ import br.com.microservices.orchestrated.orderservice.core.document.Event;
 import br.com.microservices.orchestrated.orderservice.core.document.Order;
 import br.com.microservices.orchestrated.orderservice.core.dto.OrderRequestDTO;
 import br.com.microservices.orchestrated.orderservice.core.producer.SagaProducer;
+import br.com.microservices.orchestrated.orderservice.core.repository.EventRepository;
 import br.com.microservices.orchestrated.orderservice.core.repository.OrderRepository;
 import br.com.microservices.orchestrated.orderservice.core.utils.JsonUtil;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -21,12 +20,12 @@ public class OrderService {
 
     private static final String TRANSACTION_ID_PATTERN = "%s_%s";
 
-    private final EventService eventService;
+    private final EventRepository eventService;
     private final SagaProducer producer;
     private final JsonUtil jsonUtil;
     private final OrderRepository repository;
 
-    public OrderService(EventService eventService, SagaProducer producer, JsonUtil jsonUtil, OrderRepository repository) {
+    public OrderService(EventRepository eventService, SagaProducer producer, JsonUtil jsonUtil, OrderRepository repository) {
         this.eventService = eventService;
         this.producer = producer;
         this.jsonUtil = jsonUtil;

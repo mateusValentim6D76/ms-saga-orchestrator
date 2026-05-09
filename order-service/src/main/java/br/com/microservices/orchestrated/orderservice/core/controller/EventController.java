@@ -1,28 +1,28 @@
 package br.com.microservices.orchestrated.orderservice.core.controller;
 
-import br.com.microservices.orchestrated.orderservice.core.document.Order;
-import br.com.microservices.orchestrated.orderservice.core.dto.OrderRequestDTO;
-import br.com.microservices.orchestrated.orderservice.core.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.microservices.orchestrated.orderservice.core.document.Event;
+import br.com.microservices.orchestrated.orderservice.core.dto.EventFiltersDTO;
+import br.com.microservices.orchestrated.orderservice.core.service.EventService;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping("/api/event")
+@AllArgsConstructor
 public class EventController {
 
-    private final OrderService orderService;
+    private EventService eventService;
 
-    @Autowired
-    public EventController(OrderService orderService) {
-        this.orderService = orderService;
+    @GetMapping
+    public Event findByFilters(EventFiltersDTO filters) {
+        return eventService.findByFilters(filters);
     }
 
-    @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody OrderRequestDTO orderRequestDTO){
-        return ResponseEntity.ok(orderService.createOrder(orderRequestDTO));
+    @GetMapping("/all")
+    public List<Event> findAll() {
+        return eventService.findAll();
     }
+
 }

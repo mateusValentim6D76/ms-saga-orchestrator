@@ -6,6 +6,6 @@ import lombok.Getter;
 public enum ESagaStatus {
 
     SUCCESS,
-    ROLLBACK_PEDING,
+    ROLLBACK_PENDING,
     FAIL;
 }
