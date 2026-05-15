@@ -19,5 +19,5 @@ public enum ETopics {
     INVENTORY_SUCCESS("inventory-success"),
     INVENTORY_FAIL("inventory-fail");
 
-    private String topics;
+    private String topic;
 }

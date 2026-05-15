@@ -83,56 +83,56 @@ public class KafkaConfig {
 
     @Bean
     public NewTopic startSagaTopic() {
-        return buildTopics(ETopics.START_SAGA.getTopics());
+        return buildTopics(ETopics.START_SAGA.getTopic());
     }
 
     @Bean
     public NewTopic baseOrchestratorTopic() {
-        return buildTopics(ETopics.BASE_ORCHESTRATOR.getTopics());
+        return buildTopics(ETopics.BASE_ORCHESTRATOR.getTopic());
     }
 
     @Bean
     public NewTopic finishSuccessTopic() {
-        return buildTopics(FINISH_SUCCESS.getTopics());
+        return buildTopics(FINISH_SUCCESS.getTopic());
     }
 
     @Bean
     public NewTopic finishFailTopic() {
-        return buildTopics(FINISH_FAIL.getTopics());
+        return buildTopics(FINISH_FAIL.getTopic());
     }
 
     @Bean
     public NewTopic notifyEndingTopic() {
-        return buildTopics(ETopics.NOTIFY_ENDINDG.getTopics());
+        return buildTopics(ETopics.NOTIFY_ENDINDG.getTopic());
     }
 
     @Bean
     public NewTopic productValidationSuccessTopic() {
-        return buildTopics(ETopics.PRODUCT_VALIDATION_SUCCESS.getTopics());
+        return buildTopics(ETopics.PRODUCT_VALIDATION_SUCCESS.getTopic());
     }
 
     @Bean
     public NewTopic productValidationFailTopic() {
-        return buildTopics(ETopics.PRODUCT_VALIDATION_FAIL.getTopics());
+        return buildTopics(ETopics.PRODUCT_VALIDATION_FAIL.getTopic());
     }
 
     @Bean
     public NewTopic paymentSuccessTopic() {
-        return buildTopics(ETopics.PAYMENT_SUCCESS.getTopics());
+        return buildTopics(ETopics.PAYMENT_SUCCESS.getTopic());
     }
 
     @Bean
     public NewTopic paymentFailTopic() {
-        return buildTopics(ETopics.PAYMENT_FAIL.getTopics());
+        return buildTopics(ETopics.PAYMENT_FAIL.getTopic());
     }
 
     @Bean
     public NewTopic inventorySuccessTopic() {
-        return buildTopics(ETopics.INVENTORY_SUCCESS.getTopics());
+        return buildTopics(ETopics.INVENTORY_SUCCESS.getTopic());
     }
 
     @Bean
     public NewTopic inventoryFailTopic() {
-        return buildTopics(ETopics.INVENTORY_FAIL.getTopics());
+        return buildTopics(ETopics.INVENTORY_FAIL.getTopic());
     }
 }
