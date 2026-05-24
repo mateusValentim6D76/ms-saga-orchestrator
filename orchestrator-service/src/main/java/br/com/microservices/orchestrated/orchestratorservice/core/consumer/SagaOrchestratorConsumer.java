@@ -22,8 +22,7 @@ public class SagaOrchestratorConsumer {
     public void consumeStartSagaEvent(String payload){
         log.info("Receiving event {} from start-saga topic", payload);
         var event = jsonUtil.toEvent(payload);
-        log.info(event.toString());
-        orchestratorService.startSaga();
+        orchestratorService.startSaga(event);
     }
 
     @KafkaListener(
@@ -33,7 +32,7 @@ public class SagaOrchestratorConsumer {
     public void consumeOrchestratorEvent(String payload){
         log.info("Receiving event {} from orchestrator topic", payload);
         var event = jsonUtil.toEvent(payload);
-        log.info(event.toString());
+        orchestratorService.continueSaga(event);
     }
 
     @KafkaListener(
