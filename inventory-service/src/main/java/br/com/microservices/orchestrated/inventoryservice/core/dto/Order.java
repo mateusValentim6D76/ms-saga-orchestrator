@@ -19,5 +19,5 @@ public class Order {
     private LocalDateTime createdAt;
     private String transactionId;
     private double totalAmount;
-    private int totalItens;
+    private int totalItems;
 }

@@ -137,13 +137,13 @@ public class PaymentService {
                 .getOrderProducts()
                 .stream()
                 .map(products ->
-                        products.getQuantity() * products.getProduct().getUnitValue() * 1.0)
+                        products.getQuantity() * Double.parseDouble(products.getProduct().getUnitValue()))
                 .reduce(REDUCE_SUM_VALUE, Double::sum);
     }
 
     private void checkCurrentValidation(Event event) {
         if (paymentRepository.existsByOrderIdAndTransactionId(event.getPayload().getId(), event.getTransactionId())) {
-            throw new ValidationException("There's another transcationId for this validation");
+            throw new ValidationException("There's another transactionId for this validation.");
         }
     }
 

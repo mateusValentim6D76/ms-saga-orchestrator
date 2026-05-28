@@ -71,13 +71,13 @@ public class ProductValidationService {
 
     private void checkCurrentValidation(EventDTO event) {
         validateProductsInformed(event);
-        if (validationRepository.existsByOrderIdAndTransactionId(event.getOrderId(), event.getTransactionId())){
-            throw new ValidationException("There's another transcationId for this validation");
+        if (validationRepository.existsByOrderIdAndTransactionId(
+                event.getOrderId(), event.getTransactionId())) {
+            throw new ValidationException("There's another transactionId for this validation.");
         }
         event.getPayload().getOrderProducts().forEach(product -> {
             validateProductInformed(product);
             validateExistingProducts(product.getProduct().getCode());
-
         });
     }
 

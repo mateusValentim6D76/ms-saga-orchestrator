@@ -23,7 +23,7 @@ public class Order {
     private LocalDateTime createdAt;
     private String transactionId;
     private double totalAmount;
-    private int totalItens;
+    private int totalItems;
 
     public String getId() {
         return id;
@@ -45,8 +45,8 @@ public class Order {
         return totalAmount;
     }
 
-    public int getTotalItens() {
-        return totalItens;
+    public int getTotalItems() {
+        return totalItems;
     }
 
     public void setOrderProducts(List<OrderProducts> orderProducts) {
@@ -65,7 +65,7 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public void setTotalItens(int totalItens) {
-        this.totalItens = totalItens;
+    public void setTotalItems(int totalItems) {
+        this.totalItems = totalItems;
     }
 }

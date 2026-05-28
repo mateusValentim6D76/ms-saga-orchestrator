@@ -23,7 +23,7 @@ public class JsonUtil {
         try {
             return objectMapper.readValue(json, Event.class);
         } catch (Exception e) {
-            return null;
+            throw new RuntimeException("Error converting JSON to event" + json + e);
         }
     }
 }
