@@ -150,11 +150,11 @@ curl -X POST http://localhost:3000/api/order \
   -d '{
     "orderProducts": [
       {
-        "product": { "code": "COMIC_BOOKS", "unitValue": 15.50 },
+        "product": { "code": "JAVA_BOOKS", "unitValue": 15.50 },
         "quantity": 3
       },
       {
-        "product": { "code": "NOVELS", "unitValue": 9.99 },
+        "product": { "code": "MOVIES", "unitValue": 9.99 },
         "quantity": 2
       }
     ]
