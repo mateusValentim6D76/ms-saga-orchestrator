@@ -58,14 +58,14 @@ Implementação do padrão SAGA Orquestrado com Java, Spring Boot e Apache Kafka
 ### Fluxo de sucesso
 
 ```
-Order Service       →  [start-saga]                  →  Orchestrator
-Orchestrator        →  [product-validation-success]   →  Product Validation Service
-Product Validation  →  [orchestrator: SUCCESS]        →  Orchestrator
-Orchestrator        →  [payment-success]              →  Payment Service
-Payment Service     →  [orchestrator: SUCCESS]        →  Orchestrator
-Orchestrator        →  [inventory-success]            →  Inventory Service
-Inventory Service   →  [orchestrator: SUCCESS]        →  Orchestrator
-Orchestrator        →  [finish-success] + [notify-ending]
+Order Service       -> [start-saga]                  -> Orchestrator
+Orchestrator        -> [product-validation-success]   -> Product Validation Service
+Product Validation  -> [orchestrator: SUCCESS]        -> Orchestrator
+Orchestrator        -> [payment-success]              -> Payment Service
+Payment Service     -> [orchestrator: SUCCESS]        -> Orchestrator
+Orchestrator        -> [inventory-success]            -> Inventory Service
+Inventory Service   -> [orchestrator: SUCCESS]        -> Orchestrator
+Orchestrator        -> [finish-success] + [notify-ending]
 ```
 
 ### Fluxo de compensação
@@ -73,10 +73,10 @@ Orchestrator        →  [finish-success] + [notify-ending]
 Se qualquer serviço retornar falha, o orquestrador aciona o rollback em cadeia reversa. Exemplo com falha no inventory:
 
 ```
-Inventory Service  →  ROLLBACK_PENDING  →  inventory-fail   (rollback do próprio serviço)
-Inventory Service  →  FAIL              →  payment-fail     (rollback do pagamento)
-Payment Service    →  FAIL              →  product-validation-fail
-                                        →  finish-fail
+Inventory Service  -> ROLLBACK_PENDING  -> inventory-fail   (rollback do próprio serviço)
+Inventory Service  -> FAIL              -> payment-fail     (rollback do pagamento)
+Payment Service    -> FAIL              -> product-validation-fail
+                                        -> finish-fail
 ```
 
 ### SagaHandler  matriz de decisão
