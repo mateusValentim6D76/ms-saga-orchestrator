@@ -1,6 +1,6 @@
 # Saga Orquestrado com Microsserviços
 
-Implementação do padrão SAGA Orquestrado com Java, Spring Boot e Apache Kafka. O projeto cobre o fluxo completo de um pedido — validação de produtos, pagamento e atualização de estoque — com compensação automática (rollback) em caso de falha em qualquer etapa.
+Implementação do padrão SAGA Orquestrado com Java, Spring Boot e Apache Kafka. O projeto cobre o fluxo completo de um pedido  validação de produtos, pagamento e atualização de estoque  com compensação automática (rollback) em caso de falha em qualquer etapa.
 
 ## Arquitetura
 
@@ -79,7 +79,7 @@ Payment Service    →  FAIL              →  product-validation-fail
                                         →  finish-fail
 ```
 
-### SagaHandler — matriz de decisão
+### SagaHandler  matriz de decisão
 
 O orquestrador não usa `if/else` para rotear os eventos. Toda a lógica está concentrada em uma matriz estática: dado o serviço de origem e o status do evento, existe exatamente um tópico de destino.
 
@@ -103,7 +103,7 @@ O `SagaExecutionController` percorre essa matriz com um stream, localiza a linha
 
 - Java 17 + Spring Boot
 - Apache Kafka (mensageria entre os serviços)
-- MongoDB (pedidos e histórico de eventos — order-service)
+- MongoDB (pedidos e histórico de eventos  order-service)
 - PostgreSQL (payment-service, product-validation-service, inventory-service)
 - Docker e Docker Compose
 - Redpanda Console (UI para visualização dos tópicos Kafka)
